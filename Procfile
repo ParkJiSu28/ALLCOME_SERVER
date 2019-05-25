@@ -1,0 +1,1 @@
+web: gunicorn all_come.wsgi --log-file -

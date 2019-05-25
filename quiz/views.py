@@ -66,6 +66,54 @@ class MockTestViewSet(ModelViewSet):
             res = first | second | third | fourth
             return res
 
+        if len(subject) == 5:
+            subject_qs_1 = qs.filter(subject=subject.pop())
+            subject_qs_2 = qs.filter(subject=subject.pop())
+            subject_qs_3 = qs.filter(subject=subject.pop())
+            subject_qs_4 = qs.filter(subject=subject.pop())
+            subject_qs_5 = qs.filter(subject=subject.pop())
+            first = subject_qs_1.order_by("?")[:6]
+            second = subject_qs_2.order_by("?")[:6]
+            third = subject_qs_3.order_by("?")[:6]
+            fourth = subject_qs_4.order_by("?")[:6]
+            fifth = subject_qs_5.order_by("?")[:6]
+            res = first | second | third | fourth | fifth
+            return res
+
+        if len(subject) == 6:
+            subject_qs_1 = qs.filter(subject=subject.pop())
+            subject_qs_2 = qs.filter(subject=subject.pop())
+            subject_qs_3 = qs.filter(subject=subject.pop())
+            subject_qs_4 = qs.filter(subject=subject.pop())
+            subject_qs_5 = qs.filter(subject=subject.pop())
+            subject_qs_6 = qs.filter(subject=subject.pop())
+            first = subject_qs_1.order_by("?")[:5]
+            second = subject_qs_2.order_by("?")[:5]
+            third = subject_qs_3.order_by("?")[:5]
+            fourth = subject_qs_4.order_by("?")[:5]
+            fifth = subject_qs_5.order_by("?")[:5]
+            sixth = subject_qs_6.order_by("?")[:5]
+            res = first | second | third | fourth | fifth | sixth
+            return res
+
+        if len(subject) == 7:
+            subject_qs_1 = qs.filter(subject=subject.pop())
+            subject_qs_2 = qs.filter(subject=subject.pop())
+            subject_qs_3 = qs.filter(subject=subject.pop())
+            subject_qs_4 = qs.filter(subject=subject.pop())
+            subject_qs_5 = qs.filter(subject=subject.pop())
+            subject_qs_6 = qs.filter(subject=subject.pop())
+            subject_qs_7 = qs.filter(subject=subject.pop())
+            first = subject_qs_1.order_by("?")[:4]
+            second = subject_qs_2.order_by("?")[:4]
+            third = subject_qs_3.order_by("?")[:4]
+            fourth = subject_qs_4.order_by("?")[:4]
+            fifth = subject_qs_5.order_by("?")[:4]
+            sixth = subject_qs_6.order_by("?")[:5]
+            seventh = subject_qs_7.order_by("?")[:5]
+            res = first | second | third | fourth | fifth | sixth | seventh
+            return res
+
 
 @api_view(['GET'])
 def subject_view(request):

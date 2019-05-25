@@ -6,7 +6,7 @@ from django.db import models
 class Quiz(models.Model):
     pr_id = models.IntegerField(primary_key=True, unique=True, blank=False)
     subject = models.CharField(max_length=50, blank=False)
-    image = models.URLField()
+    image = models.URLField(blank=True)
     title = models.TextField()
     answer = models.IntegerField()
     explain = models.TextField()
