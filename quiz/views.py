@@ -120,10 +120,10 @@ def subject_view(request):
     data = [
         {"subject1": "Algorithme"},
         {'subject2': 'Database'},
-        {'subject3': 'sofrware_engineering'},
+        {'subject3': 'Software_Engineering'},
         {'subject4': 'operation_system'},
         {'subject5': 'computer_network'},
         {'subject6': 'computer_structure'},
-        {'subject7': 'data_structure'},
+        {'subject7': 'Data_structure'},
     ]
     return Response(data=data)
