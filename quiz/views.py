@@ -34,13 +34,13 @@ class MockTestViewSet(ModelViewSet):
 
         if len(subject) == 1:
             subject_qs = qs.filter(subject=subject.pop())
-            return subject_qs.order_by("?")[:1]
+            return subject_qs.order_by("?")[:30]
 
         if len(subject) == 2:
             subject_qs_1 = qs.filter(subject=subject.pop())
             subject_qs_2 = qs.filter(subject=subject.pop())
-            first = subject_qs_1.order_by("?")[:10]
-            second = subject_qs_2.order_by("?")[:10]
+            first = subject_qs_1.order_by("?")[:15]
+            second = subject_qs_2.order_by("?")[:15]
             res = first | second
             return res
 
@@ -48,9 +48,9 @@ class MockTestViewSet(ModelViewSet):
             subject_qs_1 = qs.filter(subject=subject.pop())
             subject_qs_2 = qs.filter(subject=subject.pop())
             subject_qs_3 = qs.filter(subject=subject.pop())
-            first = subject_qs_1.order_by("?")[:7]
-            second = subject_qs_2.order_by("?")[:7]
-            third = subject_qs_3.order_by("?")[:8]
+            first = subject_qs_1.order_by("?")[:10]
+            second = subject_qs_2.order_by("?")[:10]
+            third = subject_qs_3.order_by("?")[:10]
             res = first | second | third
             return res
 
@@ -59,10 +59,10 @@ class MockTestViewSet(ModelViewSet):
             subject_qs_2 = qs.filter(subject=subject.pop())
             subject_qs_3 = qs.filter(subject=subject.pop())
             subject_qs_4 = qs.filter(subject=subject.pop())
-            first = subject_qs_1.order_by("?")[:5]
-            second = subject_qs_2.order_by("?")[:5]
-            third = subject_qs_3.order_by("?")[:5]
-            fourth = subject_qs_4.order_by("?")[:5]
+            first = subject_qs_1.order_by("?")[:8]
+            second = subject_qs_2.order_by("?")[:8]
+            third = subject_qs_3.order_by("?")[:7]
+            fourth = subject_qs_4.order_by("?")[:7]
             res = first | second | third | fourth
             return res
 
