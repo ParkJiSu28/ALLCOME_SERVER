@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Quiz
 from .serializers import QuizSerializer
+import random
 
 
 class QuizViewSet(ModelViewSet):
@@ -16,10 +17,7 @@ class QuizRequestViewSet(ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        subject = self.request.query_params.get('subject', None)
-        if subject is not None:
-            subject_qs = qs.filter(subject=subject)
-            return subject_qs.order_by("?")[:1]
+        return subject_select(self, qs)
 
 
 class MockTestViewSet(ModelViewSet):
@@ -29,8 +27,6 @@ class MockTestViewSet(ModelViewSet):
     def get_queryset(self):
         qs = super().get_queryset()
         subject = self.request.query_params.getlist('subject', None)
-        print(subject)
-        print(len(subject))
 
         if len(subject) == 1:
             subject_qs = qs.filter(subject=subject.pop())
@@ -114,7 +110,6 @@ class MockTestViewSet(ModelViewSet):
             res = first | second | third | fourth | fifth | sixth | seventh
             return res
 
-
 @api_view(['GET'])
 def subject_view(request):
     data = [
@@ -127,3 +122,39 @@ def subject_view(request):
         {'subject7': 'Data_structure'},
     ]
     return Response(data=data)
+
+
+def subject_select(self, qs):
+    subject = self.request.query_params.get('subject', None)
+    if subject is not None:
+        subject_qs = qs.filter(subject=subject)
+        if subject == 'Data_Structure':
+            rand = random.randint(101, 130)
+            al = subject_qs.filter(pr_id=rand)
+            return al
+        if subject == 'Algorithme':
+            rand = random.randint(101, 130)
+            al = subject_qs.filter(pr_id=rand)
+            return al
+        if subject == 'computer_structure':
+            rand = random.randint(201, 230)
+            c_s = subject_qs.filter(pr_id=rand)
+            return c_s
+        if subject == 'operation_system':
+            rand = random.randint(301, 330)
+            o_s = subject_qs.filter(pr_id=rand)
+            return o_s
+        if subject == 'computer_network':
+            rand = random.randint(401, 430)
+            c_n = subject_qs.filter(pr_id=rand)
+            return c_n
+        if subject == 'Software_Engineering':
+            rand = random.randint(501, 530)
+            s_e = subject_qs.filter(pr_id=rand)
+            return s_e
+        if subject == 'Database':
+            rand = random.randint(601, 630)
+            d_b = subject_qs.filter(pr_id=rand)
+            return d_b
+        return subject_qs
+
