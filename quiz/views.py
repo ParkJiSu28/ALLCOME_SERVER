@@ -110,10 +110,11 @@ class MockTestViewSet(ModelViewSet):
             res = first | second | third | fourth | fifth | sixth | seventh
             return res
 
+
 @api_view(['GET'])
 def subject_view(request):
     data = [
-        {"subject1": "Algorithme"},
+        {"subject1": 'Algorithme'},
         {'subject2': 'Database'},
         {'subject3': 'Software_Engineering'},
         {'subject4': 'operation_system'},
@@ -129,7 +130,7 @@ def subject_select(self, qs):
     if subject is not None:
         subject_qs = qs.filter(subject=subject)
         if subject == 'Data_Structure':
-            rand = random.randint(101, 130)
+            rand = random.randint(1, 30)
             al = subject_qs.filter(pr_id=rand)
             return al
         if subject == 'Algorithme':
@@ -156,5 +157,4 @@ def subject_select(self, qs):
             rand = random.randint(601, 630)
             d_b = subject_qs.filter(pr_id=rand)
             return d_b
-        return subject_qs
-
+        return subject_qs[0:1]
